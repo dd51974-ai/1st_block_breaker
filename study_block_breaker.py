@@ -36,6 +36,31 @@ def move_bar():
         tab.fill((0, 0, 0))
         pygame.draw.rect(tab, (255, 0, 0), (x, y, width, height))
         pygame.display.update()
+
+def ball():
+    # x += dx
+    # y += dy
+    screen = window()
+    ball_x = 400
+    ball_y = 500
+    ball_radius = 10
+    dx = 4
+    dy = 4
+    lunch = move_bar()
+    run = True
+    while run:
+        balls = pygame.key.get_pressed()
+        for balls in ball():
+            ball_x += dx #壁反射
+            ball_y += dy
+            if ball_x <= 0 or ball_x >= 800:
+                dx *= -1
+            if ball_y <=0 or ball_y >= 600:
+                dy *= -1
+
+            screen.fill((0, 0, 0))
+            pygame.draw.circle(screen, (255, 255, 25), (ball_x, ball_y), ball_radius)
+
     pygame.quit()
 if __name__ == "__main__":
      move_bar()
