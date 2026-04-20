@@ -18,15 +18,17 @@ def main():
     x = 400
     y = 500
 
-    width = 20
+    width = 80
     height = 20
     vel = 5
+    bar = (width and height)
 
     # Ball
+    # Start position
     ball_x = 400
-    ball_y = 400
-    dx = 4
-    dy = 4
+    ball_y = 300
+    dx = 1
+    dy = 1
     ball_radius = 10
 
     run = True
@@ -40,15 +42,19 @@ def main():
             x -= vel
         if keys[pygame.K_RIGHT] and x < 800 - width:
             x += vel
+
         # Operate ball
-        if keys[pygame.K_SPACE]:
-            ball_x += dx
-            ball_y += dy
+        ball_x -= dx
+        ball_y -= dy
 
         # rebound wall
         if ball_x <= 0 or ball_x >= 800:
             dx *= -1
-        if ball_y <= 0 or ball_x >= 600:
+        if ball_y <= 0 or ball_y >= 600:
+            dy *= -1
+
+        # rebound bar
+        if ball_x <= ball_x <= x + width and ball_y <= ball_y <= y + height:
             dy *= -1
 
         # drawing
