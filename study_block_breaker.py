@@ -57,6 +57,9 @@ def main():
         if ball_x <= ball_x <= x + width and ball_y <= ball_y <= y + height:
             dy *= -1
 
+        if (x <= ball_x <= x + width) and (ball_y + ball_radius >= y):
+            dy *= -1
+
         # drawing
         tab.fill((0, 0, 0))
         # drawing bar
