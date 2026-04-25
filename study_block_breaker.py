@@ -27,6 +27,7 @@ def main():
     # Start position
     ball_x = 400
     ball_y = 300
+    # Ball speed
     dx = 1
     dy = 1
     ball_radius = 10
@@ -54,10 +55,9 @@ def main():
             dy *= -1
 
         # rebound bar
-        if ball_x <= ball_x <= x + width and ball_y <= ball_y <= y + height:
-            dy *= -1
-
         if (x <= ball_x <= x + width) and (ball_y + ball_radius >= y):
+            dy *= -1
+        elif (x >= ball_x >= x + width) and (ball_y + ball_radius <= y):
             dy *= -1
 
         # drawing
